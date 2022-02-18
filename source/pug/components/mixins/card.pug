@@ -1,0 +1,94 @@
+mixin card(data, mods)
+
+  //- Принимает:
+  //- data {
+  //-   url:   {string},  - адрес для ссылки
+  //-   img:   {string},  - адрес картинки товара
+  //-   name:  {string},  - название
+  //-   descr: {string},  - описание
+  //-   price: {number},  - цена
+  //-   new:   {boolean}, - показать метку «новинка»
+  //- }
+  //- mods {string}       - модификаторы
+  //- Вызов:
+        +card({
+          url: 'good01',
+          imgPath: 'content',
+          imgName: 'content',
+          imgPostfix: 'content',
+          name: 'Товар1',
+          descr: 'Описание1',
+          price: 7777,
+          new: true,
+        }, 'mod')
+        +card({
+          imgPath: 'content',
+          imgName: 'content',
+          imgPostfix: 'content',
+          name: 'Товар2',
+          price: 12000,
+        })
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' card--' + modsList[i].trim();
+      }
+    }
+    var newLabel = (data.new !== 'undefined' && data.new) ? '<div class="card__new">Новинка!</div>' : '';
+    var price = '' + data.price;
+    var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' ₽';
+
+  article.card(class=allMods)&attributes(attributes)
+    != newLabel
+    if (data.url !== 'undefined' && data.url)
+      .card__inner
+        a.card__img-wrap(href=data.url)
+          +img(data.imgPath, data.imgName, data.imgPostfix, 150, 150, data.name).card__img
+        .card__content-wrap
+          header.card__header
+            h3.card__title
+              a(href=data.url)!= data.name
+            p.card__price!= price
+          if (data.descr !== 'undefined' && data.descr)
+            p.card__descr!= data.descr
+          footer.card__footer
+            +custom-qty({
+              title: 'Количество',
+              helpText: 'От 1 до 10, шаг 1',
+              mods: '',
+              val: '9',
+              attrs: {
+                name: 'quantity',
+                max: '10',
+                min: '1',
+                step: '1',
+              }
+            })
+            +btn({text: "Удалить", type: "button"})
+    else
+      .card__inner
+        span.card__img-wrap
+          +img(data.imgPath, data.imgName, data.imgPostfix, 150, 150, data.name).card__img
+        .card__content-wrap
+          header.card__header
+            h3.card__title!= data.name
+            p.card__price!= price
+          if (data.descr !== 'undefined' && data.descr)
+            p.card__descr!= data.descr
+          footer.card__footer
+            +custom-qty({
+              title: 'Количество',
+              helpText: 'От 1 до 10, шаг 1',
+              mods: '',
+              val: '9',
+              attrs: {
+                name: 'quantity',
+                max: '10',
+                min: '1',
+                step: '1',
+              }
+            })
+            +btn({text: "Удалить", type: "button"})

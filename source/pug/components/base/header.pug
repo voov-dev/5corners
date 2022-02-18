@@ -3,7 +3,7 @@ mixin header(headerMods, currentUrl)
     const headerLinks = [
       {
         href: "index.html",
-        text: "Главная"
+        text: "Страница 1"
       },
       {
         href: "#",
@@ -13,18 +13,46 @@ mixin header(headerMods, currentUrl)
         href: "#",
         text: "Страница 3"
       },
+      {
+        href: "#",
+        text: "Страница 4"
+      },
+      {
+        href: "#",
+        text: "Страница 5"
+      },
+      {
+        href: "#",
+        text: "Страница 6"
+      },
     ]
 
   header.header(class=headerMods)
     .container
-      if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
-      else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
       nav.main-nav
         button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
           +icon("icon-burger", 20, 20)
+        +search()
+
+        if(currentUrl === "index.html")
+          //- lighthouse снимает 10 баллов SEO за <a> без href
+          span.header__logo Логотип
+            +img("svg", "logo", "svg", 160, 50, "Logo")
+        else
+          a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
+            +img("svg", "logo", "svg", 160, 50, "Logo")
+
+        .sub-links
+          a.main-nav__link(href="/")
+            +icon("icon-user", 20, 20)
+            span.visually-hidden!= "Пользователь"
+          a.main-nav__link(href="/")
+            +icon("icon-heart", 20, 20)
+            span.visually-hidden!= "Избранное"
+          a.main-nav__link(href="/")
+            +icon("icon-basket", 20, 20)
+            span.visually-hidden!= "Корзина"
+
         .main-nav__wrapper
           ul.main-nav__list
             each link in headerLinks

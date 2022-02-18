@@ -1,4 +1,4 @@
-mixin custom-input(options = {})
+mixin custom-input(options)
   - const inputLabel = options.inputLabel ? options.inputLabel : false
   - const inputPlaceholder = options.inputPlaceholder ? options.inputPlaceholder : false
   - const inputError = options.inputError ? options.inputError : false
@@ -11,8 +11,9 @@ mixin custom-input(options = {})
 
   .custom-input&attributes(attributes)
     label
+      if inputError
+        .custom-input__error!=inputError
       if inputLabel
         span.custom-input__label!=inputLabel
       input(type=inputType, id=inputId, name=inputName, value=inputValue, minlength=inputMinLength, maxlength=inputMaxLength, placeholder=inputPlaceholder)
-    if inputError
-      .custom-input__error!=inputError
+
