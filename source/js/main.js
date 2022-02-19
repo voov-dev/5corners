@@ -2,6 +2,8 @@ import {iosVhFix} from './utils/ios-vh-fix';
 import {initModals} from './modules/modals/init-modals';
 import {initCustomSelect} from './modules/form/init-custom-select';
 import {initFormValidate} from './modules/form/init-form-validate';
+import {customQty} from './modules/form/custom-qty';
+import {initMap} from './modules/map';
 
 // ---------------------------------
 
@@ -21,6 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
     initModals();
     initCustomSelect();
     initFormValidate();
+    customQty();
+    initMap();
   });
 });
 

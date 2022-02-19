@@ -43,12 +43,14 @@ mixin custom-qty(props)
 
   .custom-qty(class=allMods)&attributes(attributes)
     if(typeof(props.title) !== 'undefined' && props.title)
-      span.field-num__name!= props.title
-    span.field-num__input-wrap
-      span.field-num__input-and-btns
-        button.field-num__btn.field-num__btn--minus(type='button') -
-        button.field-num__btn.field-num__btn--plus(type='button') +
-        input.field-num__input(type='number', value=val)&attributes(props.attrs)
+      span.custom-qty__name!= props.title
+    span.custom-qty__input-wrap
+      span.custom-qty__input-and-btns
+        button.custom-qty__btn.custom-qty__btn--minus(type='button')
+          +icon("icon-minus", 16, 16)
+        button.custom-qty__btn.custom-qty__btn--plus(type='button')
+          +icon("icon-plus", 16, 16)
+        input.custom-qty__input(type='number', value=val)&attributes(props.attrs)
       if(typeof(props.helpText) !== 'undefined' && props.helpText)
-        span.field-num__help-text!= props.helpText
+        span.custom-qty__help-text!= props.helpText
       block

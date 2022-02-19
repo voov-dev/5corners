@@ -15,6 +15,12 @@
     background-color: $color-torch-red;
   }
 
+  &--text {
+    padding: 0;
+    color: $color-default-grey;
+    background-color: transparent;
+  }
+
   &:disabled {
     opacity: 0.5;
 
@@ -24,7 +30,7 @@
   @media (hover: hover), screen and (min-width: 0\0) {
     &:hover,
     &:focus {
-      opacity: 0.8;
+      color: $color-default-black;
     }
   }
 }

@@ -11,7 +11,8 @@ mixin basket()
           a.main-nav__link(href="/") Войти
         div(data-validate)
           form(method="post")
-            +custom-input({inputLabel: "Адрес", inputError: "Не корректное адрес", inputName: "user-address", inputMinLength: "2"})(data-validate-type="text", data-limitations="address")
+            +custom-input({inputLabel: "Адрес", inputError: "Не корректное адрес", inputName: "user-address", inputMinLength: "2", inputId: "address"})(data-validate-type="text")
+            #map.basket-page__map
             +custom-input({inputLabel: "Ваше Имя", inputError: "Не корректное имя", inputName: "user-name", inputMinLength: "2"})(data-validate-type="text", data-limitations="name")
             +custom-input({inputType: "tel", inputLabel: "Ваш Телефон", inputError: "Не корректный телефон", inputName: "user-phone"})(data-validate-type="phone")
             +custom-input({inputType: "email", inputLabel: "Ваш Email", inputError: "Не корректный email", inputName: "user-email"})(data-validate-type="email")

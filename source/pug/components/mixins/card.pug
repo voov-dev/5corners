@@ -39,7 +39,7 @@ mixin card(data, mods)
     }
     var newLabel = (data.new !== 'undefined' && data.new) ? '<div class="card__new">Новинка!</div>' : '';
     var price = '' + data.price;
-    var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' ₽';
+    var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' руб.';
 
   article.card(class=allMods)&attributes(attributes)
     != newLabel
@@ -56,18 +56,16 @@ mixin card(data, mods)
             p.card__descr!= data.descr
           footer.card__footer
             +custom-qty({
-              title: 'Количество',
-              helpText: 'От 1 до 10, шаг 1',
               mods: '',
-              val: '9',
+              val: '1',
               attrs: {
                 name: 'quantity',
-                max: '10',
+                max: '99',
                 min: '1',
                 step: '1',
               }
             })
-            +btn({text: "Удалить", type: "button"})
+            +btn({text: "Удалить", type: "button"}).btn--text.card__delete
     else
       .card__inner
         span.card__img-wrap
@@ -80,15 +78,13 @@ mixin card(data, mods)
             p.card__descr!= data.descr
           footer.card__footer
             +custom-qty({
-              title: 'Количество',
-              helpText: 'От 1 до 10, шаг 1',
               mods: '',
-              val: '9',
+              val: '1',
               attrs: {
                 name: 'quantity',
-                max: '10',
+                max: '99',
                 min: '1',
                 step: '1',
               }
             })
-            +btn({text: "Удалить", type: "button"})
+            +btn({text: "Удалить", type: "button"}).btn--text.card__delete
