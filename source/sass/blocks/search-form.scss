@@ -1,0 +1,36 @@
+.search-form {
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    margin-right: 20px;
+    padding: 0;
+    background-color: $color-transparent;
+    border: none;
+    transition: color $trans-default;
+    pointer-events: none;
+
+    //@media (hover: hover), screen and (min-width: 0\0) {
+    //  &:hover,
+    //  &:focus {
+    //    color: $color-nobel;
+    //  }
+    //}
+  }
+
+  &__btn-icon {
+    width: 27px;
+    height: 27px;
+
+    //@include vp-599 {
+    //  width: 24px;
+    //  height: 24px;
+    //}
+  }
+
+  &__box {
+
+  }
+}

@@ -1,0 +1,58 @@
+mixin checkout()
+  .checkout-page
+    .container
+      section(id="form-checkout").checkout-page__wrapper
+        .checkout-page__content
+          h1.checkout-page__headline Корзина
+          p.checkout-page__login Есть аккаунт?
+            |
+            |
+            a.checkout-page__login-link(href="#") Войти
+
+          .checkout-page__form(data-validate, data-callback="order")
+            form
+              +custom-input({inputLabel: "Адрес", inputPlaceholder: "Адрес", inputError: "Не корректное адрес", inputName: "user-address", inputMinLength: "2", inputId: "address"})(data-validate-type="text").checkout-page__input
+              #map.checkout-page__map
+              .checkout-page__input-band
+                +custom-input({inputLabel: "Ваше Имя", inputPlaceholder: "Ваше Имя",  inputError: "Не корректное имя", inputName: "user-name", inputMinLength: "2"})(data-validate-type="text", data-limitations="name").checkout-page__input
+                +custom-input({inputType: "tel", inputLabel: "Ваш Телефон", inputPlaceholder: "Ваш Телефон", inputError: "Не корректный телефон", inputName: "user-phone"})(data-validate-type="phone").checkout-page__input
+              +custom-input({inputType: "email", inputLabel: "Ваш Email", inputPlaceholder: "Ваш Email", inputError: "Не корректный email", inputName: "user-email"})(data-validate-type="email").checkout-page__input
+              +custom-select({placeholder: "Тип упаковки", error: "Выбирете тип упаковки", optionsList: [{text: "без упаковки", value: "id-1"}, {text: "стандартная", value: "id-2"}, {text: "подарочная", value: "id-3"}]})(data-select, data-validate-type="select", data-name="some-name", data-id="id-example").checkout-page__input
+              +custom-textarea({inputLabel: "Введите комментарий", inputPlaceholder: "Введите комментарий", inputName: "user-comment"}).checkout-page__input.custom-textarea--auto
+
+              h2.checkout-page__headline-cards Выбранные товары:
+              ul.checkout-page__items
+                +checkout-card({
+                  id: 'product-id-1',
+                  imgPath: 'content',
+                  imgName: 'item',
+                  imgPostfix: 'jpg',
+                  name: 'Товар 1',
+                  descr: 'Описание товара, которое может быть длинным',
+                  price: 1090,
+                }).checkout-page__item
+                +checkout-card({
+                  id: 'product-id-2',
+                  imgPath: 'content',
+                  imgName: 'item',
+                  imgPostfix: 'jpg',
+                  name: 'Товар 2',
+                  descr: 'Описание товара, которое может быть очень-очень длинным',
+                  price: 700,
+                }).checkout-page__item
+                +checkout-card({
+                  id: 'product-id-3',
+                  imgPath: 'content',
+                  imgName: 'item',
+                  imgPostfix: 'jpg',
+                  name: 'Товар 3',
+                  descr: 'Короткое описание товара',
+                  value: 2,
+                  price: 2000,
+                }).checkout-page__item
+
+              .checkout-page__total
+                span.checkout-page__total-text Итог:
+                span.checkout-page__total-count #[output 0] руб.
+              +btn({text: "Купить", type: "submit"})
+

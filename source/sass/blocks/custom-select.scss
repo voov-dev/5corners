@@ -1,46 +1,35 @@
 .custom-select {
   position: relative;
-
-  width: 250px;
-  padding: 30px 0;
-
-  &__label {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-
-    transform: translateY(-50%);
-
-    transition: transform $trans-default, opacity $trans-default;
-
-    pointer-events: none;
-  }
+  max-width: 100%;
+  width: 100%;
+  min-height: 45px;
 
   &__placeholder {
     position: absolute;
-    top: 50%;
-    left: 10px;
-
-    transform: translateY(-50%);
-
-    transition: transform $trans-default, opacity $trans-default;
-
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 15px 0 5px;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $color-default-grey;
+    border: 1px solid transparent;
     pointer-events: none;
+    user-select: none;
+    transform: none;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out,transform .1s ease-in-out;
   }
 
   select {
     position: absolute;
-
     width: 1px;
     height: 1px;
     margin: -1px;
     padding: 0;
     overflow: hidden;
-
     white-space: nowrap;
-
     border: 0;
-
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
   }
@@ -48,55 +37,45 @@
   &__button {
     display: flex;
     align-items: center;
+    max-width: 100%;
     width: 100%;
-    height: 40px;
-    padding: 5px 10px;
-
-    background-color: $color-transparent;
-    border: 2px solid rgba($color-default-black, 0.2);
-    border-radius: 5px;
+    height: 45px;
+    padding: 15px 0 5px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $color-default-black;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $color-default-grey;
+    border-radius: 0;
     outline: none;
-    cursor: pointer;
-
     transition: border $trans-default;
-
-    &:hover {
-      border: 2px solid rgba($color-default-black, 0.5);
-    }
-
-    &:focus {
-      border: 2px solid rgba($color-default-black, 0.8);
-    }
   }
 
   &__list {
     position: absolute;
-    bottom: 32px;
+    bottom: 1px;
     z-index: 1;
-
     width: 100%;
-    max-height: 100px;
+    max-height: 130px;
     margin: 0;
-    padding: 0;
+    padding: 10px 0;
     overflow-y: auto;
-
     list-style: none;
-
     background-color: $color-default-white;
-    border: 2px solid $color-default-black;
+    border: 1px solid $color-default-grey;
+    border-radius: 0 0 5px 5px;
     transform: translateY(100%);
     visibility: hidden;
     opacity: 0;
-
     transition: visibility $trans-default, opacity $trans-default;
   }
 
   &__item {
-    padding: 5px;
-
+    padding: 8px 20px;
+    line-height: 1.25;
     outline: none;
     cursor: pointer;
-
     transition: background-color $trans-default;
 
     &[aria-selected="true"] {
@@ -120,27 +99,29 @@
 
   &__error {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 15px 0 5px;
+    font-size: 16px;
+    line-height: 1.4;
     color: $color-torch-red;
-
     opacity: 0;
-
-    transition: opacity 0.1s ease;
+    transition: opacity $trans-default;
+    transform: scale(0.75) translateY(-1.2rem);
+    transform-origin: 0 0;
   }
 
   &__text {
     flex-shrink: 0;
     width: 80%;
     overflow: hidden;
-
     text-align: left;
     white-space: nowrap;
     text-overflow: ellipsis;
-
     opacity: 0;
-
     transition: opacity $trans-default 0.1s;
 
     br {
@@ -150,14 +131,12 @@
 
   &__icon {
     flex-shrink: 0;
-    width: 20px;
-    height: 10px;
+    width: 16px;
+    height: 9px;
+    margin-right: 5px;
     margin-left: auto;
-
     background-color: $color-default-black;
-
     transition: transform $trans-default;
-
     clip-path: polygon(100% 0, 100% 20%, 50% 100%, 0 20%, 0 0, 50% 80%);
   }
 
@@ -194,7 +173,7 @@
     }
 
     .custom-select__placeholder {
-      opacity: 0;
+      transform: scale(0.75) translateY(-1.2rem);
     }
   }
 
@@ -203,13 +182,14 @@
       opacity: 1;
     }
 
-    .custom-select__button {
-      border: 2px solid $color-torch-red;
+    .custom-select__label {
+      opacity: 0;
+    }
 
-      &:focus,
-      &:hover {
-        border: 2px solid rgba($color-torch-red, 0.5);
-      }
+    .custom-select__button,
+    .custom-select__button:focus,
+    .custom-select__button:hover {
+      border-color: $color-torch-red;
     }
   }
 

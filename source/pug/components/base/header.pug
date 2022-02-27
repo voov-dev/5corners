@@ -29,36 +29,32 @@ mixin header(headerMods, currentUrl)
 
   header.header(class=headerMods)
     .container
-      nav.main-nav
+      .header__top
         button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
           +icon("icon-burger", 20, 20)
-        +search()
-
+        //+search-form().header__search-form
         if(currentUrl === "index.html")
-          //- lighthouse снимает 10 баллов SEO за <a> без href
-          span.header__logo Логотип
-            +img("svg", "logo", "svg", 160, 50, "Logo")
+          span.header__logo
+            +icon("logo", 160, 50)
         else
-          a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-            +img("svg", "logo", "svg", 160, 50, "Logo")
-
-        .sub-links
-          a.main-nav__link(href="/")
-            +icon("icon-user", 20, 20)
-            span.visually-hidden!= "Пользователь"
-          a.main-nav__link(href="/")
-            +icon("icon-heart", 20, 20)
-            span.visually-hidden!= "Избранное"
-          a.main-nav__link(href="/")
-            +icon("icon-basket", 20, 20)
-            span.visually-hidden!= "Корзина"
-
-        .main-nav__wrapper
-          ul.main-nav__list
+          a.header__logo(href="index.html", aria-label="Переход на главную")
+            +icon("logo", 160, 50)
+        .header__user-links
+          a.header__user-link.header__user-link--profile(href="#", aria-label="Личный кабинет")
+            +icon("icon-user", 24, 27)
+          a.header__user-link.header__user-link--wishlist(href="#", aria-label="Избранное")
+            +icon("icon-heart", 30, 27)
+          a.header__user-link.header__user-link--checkout(href="#", aria-label="Мини-корзина")
+            +icon("icon-basket", 25, 27)
+            span.header__user-link-counter(data-counter="checkout-counter")
+              output 0
+      nav.header__main-menu.main-menu
+        .main-menu__wrapper
+          ul.main-menu__list
             each link in headerLinks
               - const activeState = currentUrl === link.href
-              li.main-nav__item
+              li.main-menu__item
                 if(activeState)
-                  span.main-nav__link.is-active=link.text
+                  span.main-menu__link.is-active=link.text
                 else
-                  a.main-nav__link(href=link.href)=link.text
+                  a.main-menu__link(href=link.href)=link.text

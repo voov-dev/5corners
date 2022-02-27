@@ -9,9 +9,9 @@ mixin custom-textarea(options = {})
   - const inputMaxLength = options.inputMaxLength ? options.inputMaxLength : false
 
   .custom-textarea&attributes(attributes)
-    label
+    label.custom-textarea__input-wrap
+      textarea(id=inputId, name=inputName, value=inputValue, minlength=inputMinLength, maxlength=inputMaxLength, placeholder=inputPlaceholder, rows="1").custom-textarea__input
       if inputLabel
-        span.custom-textarea__label!=inputLabel
-      textarea(id=inputId, name=inputName, value=inputValue, minlength=inputMinLength, maxlength=inputMaxLength, placeholder=inputPlaceholder)
-    if inputError
-      .custom-textarea__error!=inputError
+        span.custom-textarea__name!=inputLabel
+      if inputError
+        .custom-textarea__error!=inputError

@@ -1,0 +1,27 @@
+mixin search-form(props)
+  -
+    if (typeof (props) === 'undefined') {
+      var props = {};
+    }
+    var allMods = '';
+    if (typeof (props.mods) !== 'undefined' && props.mods) {
+      var modsList = props.mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' search-form--' + modsList[i].trim();
+      }
+    }
+
+  .search-form(class=allMods)&attributes(attributes)
+    .search__wrapper
+      button(type="button", aria-label="Переключатель отображения поиска", aria-pressed="false").search-form__btn
+        +icon("icon-search", 27, 27).search-form__btn-icon
+      form(method="post").search-form__box
+        +icon("icon-search", 25, 25).search__icon
+        +custom-input({
+          inputType: "search",
+          inputLabel: "Поиск",
+          inputPlaceholder: "Поиск",
+          inputName: "search-form",
+          inputId: "search-form",
+        }).search-form__input
+        button(type="submit", aria-label="Найти").search-form__btn-search

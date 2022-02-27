@@ -9,7 +9,7 @@ mixin custom-qty(props)
   //-     attrs:            {object} - любые атрибуты для input
   //-       placeholder:    {string}
   //- Вызов:
-        +field-num({
+        +custom-qty({
           title: 'Количество',
           helpText: 'От 1 до 10, шаг 1',
           mods: '',
@@ -19,12 +19,6 @@ mixin custom-qty(props)
             max: '10',
             min: '1',
             step: '1',
-          }
-        })
-        +field-num({
-          mods: 'error',
-          attrs: {
-            name: 'quantity',
           }
         })
 
@@ -47,9 +41,9 @@ mixin custom-qty(props)
     span.custom-qty__input-wrap
       span.custom-qty__input-and-btns
         button.custom-qty__btn.custom-qty__btn--minus(type='button')
-          +icon("icon-minus", 16, 16)
+          +icon("icon-minus", 12, 12).custom-qty__btn-icon
         button.custom-qty__btn.custom-qty__btn--plus(type='button')
-          +icon("icon-plus", 16, 16)
+          +icon("icon-plus", 12, 12).custom-qty__btn-icon
         input.custom-qty__input(type='number', value=val)&attributes(props.attrs)
       if(typeof(props.helpText) !== 'undefined' && props.helpText)
         span.custom-qty__help-text!= props.helpText

@@ -17,8 +17,9 @@ mixin breadcrumbs(mods)
       }
     }
 
-  ul.breadcrumbs(class=allMods, aria-label='Breadcrumb', role='navigation')&attributes(attributes)
-    block
+  .container
+    ul.breadcrumbs(class=allMods, aria-label='Breadcrumb', role='navigation')&attributes(attributes)
+      block
 
 
 mixin breadcrumbs-item(text, href, mods)
