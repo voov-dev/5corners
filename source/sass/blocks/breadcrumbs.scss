@@ -1,13 +1,13 @@
 .breadcrumbs {
   list-style: none;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-bottom: 30px;
   padding: 0;
   color: $color-default-black;
 
-  @include vp-768() {
-    margin-top: 50px;
-    margin-bottom: 50px;
+  @include vp-1024 {
+    margin-top: 30px;
+    margin-bottom: 48px;
   }
 
   a {
@@ -23,15 +23,15 @@
 
   &__item {
     display: inline-block;
-    margin-right: 0.6em;
+    margin-right: 0.4em;
     font-size: 18px;
     line-height: 1.1;
     white-space: nowrap;
 
-    &:not(:last-child):after {
-      content: '/';
+    &:not(:last-child)::after {
+      content: "/";
       display: inline-block;
-      margin-left: 0.8em;
+      margin-left: 0.3em;
       color: $color-default-grey;
     }
   }

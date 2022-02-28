@@ -6,6 +6,7 @@ import {customQty} from './modules/form/custom-qty';
 import {customTextarea} from './modules/form/custom-textarea';
 import {initMap} from './modules/map';
 import {mainMenu} from './modules/main-menu';
+import {initSearchForm} from './modules/init-search-form';
 
 // ---------------------------------
 
@@ -29,6 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
     customTextarea();
     initMap();
     mainMenu();
+    initSearchForm();
   });
 });
 

@@ -1,5 +1,5 @@
 .custom-qty {
-  $block-name:                &; // #{$block-name}__element
+  $block-name: &; // #{$block-name}__element
 
   display: block;
   margin-bottom: 0;
@@ -52,7 +52,7 @@
     position: absolute;
     top: 1px;
     bottom: 1px;
-    width: 35px;
+    width: 25px;
     padding: 0;
     font: 0/0 a; // stylelint-disable-line
     color: transparent;
@@ -67,7 +67,6 @@
 
     &:hover,
     &:focus {
-      //background-color: $gray-lightest;
       cursor: pointer;
     }
 
@@ -110,11 +109,10 @@
     display: block;
     padding-top: 0.4em;
 
-    &:empty { // stylelint-disable-line
+    &:empty {
       display: none;
     }
   }
-
 
 
   &--error {

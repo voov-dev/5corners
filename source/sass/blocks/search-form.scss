@@ -5,12 +5,16 @@
   &__btn {
     flex-shrink: 0;
     display: inline-flex;
-    margin-right: 20px;
-    padding: 0;
+    margin-left: 10px;
+    padding: 3px 5px 8px 2px;
+    font-size: 24px;
     background-color: $color-transparent;
     border: none;
     transition: color $trans-default;
-    pointer-events: none;
+
+    @include vp-1024 {
+      display: none;
+    }
 
     //@media (hover: hover), screen and (min-width: 0\0) {
     //  &:hover,
@@ -20,9 +24,16 @@
     //}
   }
 
+  &__input {
+    font-size: 18px;
+  }
+
   &__btn-icon {
-    width: 27px;
-    height: 27px;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    user-select: none;
+    pointer-events: none;
 
     //@include vp-599 {
     //  width: 24px;
@@ -31,6 +42,49 @@
   }
 
   &__box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
+    height: 65px;
+    padding: 15px 16px 10px;
+    background-color: $color-default-white;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
 
+    @include vp-1024 {
+      position: static;
+      padding: 0;
+      opacity: 1;
+      user-select: auto;
+      pointer-events: auto;
+      width: 295px;
+    }
+
+    &:focus-within {
+      opacity: 1;
+      user-select: auto;
+      pointer-events: auto;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-top: 15px;
+    margin-right: 20px;
+    font-size: 28px;
+
+    @include vp-1024 {
+      margin-top: 18px;
+      margin-left: -1px;
+      font-size: 34px;
+    }
   }
 }

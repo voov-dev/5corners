@@ -2,24 +2,11 @@
   display: inline-flex;
   margin: 10px 0;
   padding: 10px 20px;
-
-  color: $color-default-white;
-
-  background-color: $color-neon-blue;
+  color: $color-default-black;
+  background-color: $color-default-white;
   border: none;
   cursor: pointer;
-
-  transition: opacity $trans-default;
-
-  &--red {
-    background-color: $color-torch-red;
-  }
-
-  &--text {
-    padding: 0;
-    color: $color-default-grey;
-    background-color: transparent;
-  }
+  transition: opacity $trans-default, color $trans-default, background-color $trans-default;
 
   &:disabled {
     opacity: 0.5;
@@ -30,7 +17,22 @@
   @media (hover: hover), screen and (min-width: 0\0) {
     &:hover,
     &:focus {
-      color: $color-default-black;
+      color: $color-default-white;
+      background-color: $color-default-black;
+    }
+  }
+
+  &--text {
+    padding: 0;
+    color: $color-default-grey;
+    background-color: transparent;
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        color: $color-default-black;
+        background-color: transparent;
+      }
     }
   }
 }

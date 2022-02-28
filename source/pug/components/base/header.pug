@@ -1,8 +1,8 @@
 mixin header(headerMods, currentUrl)
   -
-    const headerLinks = [
+    var headerLinks = [
       {
-        href: "index.html",
+        href: "#",
         text: "Страница 1"
       },
       {
@@ -30,31 +30,32 @@ mixin header(headerMods, currentUrl)
   header.header(class=headerMods)
     .container
       .header__top
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
-        //+search-form().header__search-form
+        .header__controls
+          +burger(data-some="SOME", aria-label="Переключатель отображения меню", aria-pressed="false").header__burger
+          +search-form().header__search-form
         if(currentUrl === "index.html")
           span.header__logo
-            +icon("logo", 160, 50)
+            +icon("logo", 77, 34).header__logo-icon
         else
           a.header__logo(href="index.html", aria-label="Переход на главную")
-            +icon("logo", 160, 50)
+            +icon("logo", 77, 34).header__logo-icon
         .header__user-links
           a.header__user-link.header__user-link--profile(href="#", aria-label="Личный кабинет")
-            +icon("icon-user", 24, 27)
+            +icon("icon-user", 24, 27).header__icon
           a.header__user-link.header__user-link--wishlist(href="#", aria-label="Избранное")
-            +icon("icon-heart", 30, 27)
+            +icon("icon-heart", 30, 27).header__icon
           a.header__user-link.header__user-link--checkout(href="#", aria-label="Мини-корзина")
-            +icon("icon-basket", 25, 27)
-            span.header__user-link-counter(data-counter="checkout-counter")
+            +icon("icon-basket", 25, 27).header__icon
+            span.header__counter(data-counter="checkout-counter")
               output 0
       nav.header__main-menu.main-menu
         .main-menu__wrapper
           ul.main-menu__list
             each link in headerLinks
-              - const activeState = currentUrl === link.href
+              - var activeState = currentUrl === link.href
               li.main-menu__item
                 if(activeState)
                   span.main-menu__link.is-active=link.text
                 else
                   a.main-menu__link(href=link.href)=link.text
+        .main-menu__overlay
