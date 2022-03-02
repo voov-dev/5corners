@@ -89,8 +89,9 @@
   }
 
   &__delete {
-    font-size: 12px;
     margin: 0 0 0 auto;
+    font-size: 12px;
+    outline: none;
 
     @include vp-420 {
       font-size: 14px;

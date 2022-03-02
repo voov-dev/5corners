@@ -17,7 +17,7 @@ mixin breadcrumbs(mods)
     }
 
   .container
-    ul.breadcrumbs(class=allMods, aria-label='Breadcrumb', role='navigation')&attributes(attributes)
+    ul.breadcrumbs(class=allMods, aria-label='Breadcrumb')&attributes(attributes)
       block
 
 
@@ -37,8 +37,9 @@ mixin breadcrumbs-item(text, href, mods)
       }
     }
 
-  li.breadcrumbs__item(class=allMods)&attributes(attributes)
-    if(typeof(href) !== 'undefined' && href)
+  if(typeof(href) !== 'undefined' && href)
+    li.breadcrumbs__item(class=allMods)&attributes(attributes)
       a(href=href)!= text
-    else
+  else
+    li.breadcrumbs__item(class=allMods, aria-current="page")&attributes(attributes)
       span!= text

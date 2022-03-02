@@ -1,4 +1,5 @@
 import ymaps from 'ymaps';
+import _ from 'lodash/lodash';
 
 const initMap = () => {
   if (document.getElementById('map')) {
@@ -8,31 +9,33 @@ const initMap = () => {
           const myMap = new maps.Map('map', {
             center: [55.544667, 37.336759],
             zoom: 17,
+            controls: [],
           });
           let myPlacemark;
+          let newCoords = [55.544667, 37.336759];
           const addressView = new maps.SuggestView('address');
 
-          addressView.events.add('select', function (evt) {
+          addressView.events.add('select', _.debounce((evt) => {
             maps.geocode(evt.get('item').value.toString(), {results: 1}).then(function (res) {
               const firstGeoObject = res.geoObjects.get(0);
               const coords = firstGeoObject.geometry.getCoordinates();
 
               setPlacemark(coords);
+              newCoords = coords;
             });
-          });
+          }, 300));
 
-          // Слушаем клик на карте.
-          myMap.events.add('click', function (e) {
-            const coords = e.get('coords');
+          myMap.events.add('click', _.debounce((evt) => {
+            const coords = evt.get('coords');
 
             setPlacemark(coords);
             getAddress(coords);
-          });
+          }, 300));
 
           // Создание метки.
           function createPlacemark(coords) {
             return new maps.Placemark(coords, {
-              iconCaption: 'поиск...',
+              iconCaption: coords,
             }, {
               preset: 'islands#violetDotIconWithCaption',
               draggable: true,
@@ -46,9 +49,9 @@ const initMap = () => {
               myPlacemark = createPlacemark(coords);
               myMap.geoObjects.add(myPlacemark);
               // Слушаем событие окончания перетаскивания на метке.
-              myPlacemark.events.add('dragend', function () {
+              myPlacemark.events.add('dragend', _.debounce(() => {
                 getAddress(myPlacemark.geometry.getCoordinates());
-              });
+              }, 300));
             }
 
             myMap.setCenter(coords);
@@ -66,8 +69,18 @@ const initMap = () => {
                   });
 
               document.getElementById('address').value = firstGeoObject.getAddressLine();
+              setTimeout(() => {
+                document.getElementById('address').dispatchEvent(new Event('input', {bubbles: true}));
+              }, 100);
             });
           }
+
+          setPlacemark(newCoords);
+          getAddress(newCoords);
+
+          setTimeout(() => {
+            document.getElementById('address').dispatchEvent(new Event('input', {bubbles: true}));
+          }, 350);
         })
         // eslint-disable-next-line no-console
         .catch((error) => console.log('Failed to load Yandex Maps', error));

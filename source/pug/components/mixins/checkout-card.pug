@@ -1,5 +1,4 @@
 mixin checkout-card(data, mods)
-
   //- Принимает:
   //- data {
   //-   url:   {string},  - адрес для ссылки
@@ -37,7 +36,7 @@ mixin checkout-card(data, mods)
     var price = '' + data.price;
     var price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' руб.';
 
-  article.checkout-card(class=allMods)&attributes(attributes)
+  li.checkout-card(class=allMods)&attributes(attributes)
     != newLabel
     if (data.url !== 'undefined' && data.url)
       .checkout-card__inner
@@ -55,11 +54,11 @@ mixin checkout-card(data, mods)
               mods: '',
               val: '1',
               attrs: {
-                name: data.id || 'quantity',
-                name: 'quantity',
-                max: '99',
-                min: '1',
-                step: '1',
+                'name': data.id || 'quantity',
+                'data-price': data.price,
+                'max': '99',
+                'min': '1',
+                'step': '1',
               }
             })
             +btn({text: "Удалить", type: "button"}).btn--text.checkout-card__delete
@@ -78,10 +77,11 @@ mixin checkout-card(data, mods)
               mods: '',
               val: data.value || '1',
               attrs: {
-                name: data.id || 'quantity',
-                max: '99',
-                min: '1',
-                step: '1',
+                'name': data.id || 'quantity',
+                'data-price': data.price,
+                'max': '99',
+                'min': '1',
+                'step': '1',
               }
             })
             +btn({text: "Удалить", type: "button"}).btn--text.checkout-card__delete

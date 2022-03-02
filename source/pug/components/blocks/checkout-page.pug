@@ -11,14 +11,14 @@ mixin checkout()
 
           .checkout-page__form(data-validate, data-callback="order")
             form
-              +custom-input({inputLabel: "Адрес", inputPlaceholder: "Адрес", inputError: "Не корректное адрес", inputName: "user-address", inputMinLength: "2", inputId: "address"})(data-validate-type="text").checkout-page__input
+              +custom-textarea({inputLabel: "Адрес", inputPlaceholder: "Адрес", inputError: "Необходимо указать адрес", inputName: "user-address", inputMinLength: "2", inputId: "address", isRequired: true})(data-validate-type="text").checkout-page__input
               #map.checkout-page__map
               .checkout-page__input-band
-                +custom-input({inputLabel: "Ваше Имя", inputPlaceholder: "Ваше Имя",  inputError: "Не корректное имя", inputName: "user-name", inputMinLength: "2"})(data-validate-type="text", data-limitations="name").checkout-page__input
-                +custom-input({inputType: "tel", inputLabel: "Ваш Телефон", inputPlaceholder: "Ваш Телефон", inputError: "Не корректный телефон", inputName: "user-phone"})(data-validate-type="phone").checkout-page__input
-              +custom-input({inputType: "email", inputLabel: "Ваш Email", inputPlaceholder: "Ваш Email", inputError: "Не корректный email", inputName: "user-email"})(data-validate-type="email").checkout-page__input
-              +custom-select({placeholder: "Тип упаковки", error: "Выбирете тип упаковки", optionsList: [{text: "Без упаковки", value: "id-1"}, {text: "Стандартная", value: "id-2"}, {text: "Подарочная", value: "id-3"}]})(data-select, data-validate-type="select", data-name="some-name", data-id="id-example").checkout-page__input
-              +custom-textarea({inputLabel: "Введите комментарий", inputPlaceholder: "Введите комментарий", inputName: "user-comment"}).checkout-page__input.custom-textarea--auto
+                +custom-input({inputLabel: "Ваше Имя", inputPlaceholder: "Ваше Имя",  inputError: "Не корректное имя", inputName: "user-name", inputMinLength: "2", isRequired: true})(data-validate-type="text", data-limitations="name").checkout-page__input
+                +custom-input({inputType: "tel", inputLabel: "Ваш Телефон", inputPlaceholder: "Ваш Телефон", inputError: "Не корректный телефон", inputName: "user-phone", isRequired: true})(data-validate-type="phone").checkout-page__input
+              +custom-input({inputType: "email", inputLabel: "Ваш Email", inputPlaceholder: "Ваш Email", inputError: "Не корректный email", inputName: "user-email", isRequired: true})(data-validate-type="email").checkout-page__input
+              +custom-select({placeholder: "Тип упаковки", error: "Выбирете тип упаковки", optionsList: [{text: "Без упаковки", value: "Без упаковки"}, {text: "Стандартная", value: "Стандартная"}, {text: "Подарочная", value: "Подарочная"}]})(data-select, data-validate-type="select", data-name="user-select", data-id="user-select").checkout-page__input
+              +custom-textarea({inputLabel: "Введите комментарий", inputPlaceholder: "Введите комментарий", inputName: "user-comment", isRequired: false}).checkout-page__input
 
               h2.checkout-page__headline-cards Выбранные товары:
               ul.checkout-page__items

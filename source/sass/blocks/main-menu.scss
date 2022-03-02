@@ -89,6 +89,7 @@
     line-height: 1.2;
     text-transform: uppercase;
     color: $color-default-grey;
+    outline: none;
     transition: color $trans-default;
 
     &:focus,

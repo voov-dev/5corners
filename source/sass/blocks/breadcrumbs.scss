@@ -13,6 +13,8 @@
   a {
     color: $color-default-grey;
     text-decoration: none;
+    outline: none;
+    transition: color $trans-default;
 
     &:hover,
     &:focus {
@@ -23,7 +25,7 @@
 
   &__item {
     display: inline-block;
-    margin-right: 0.4em;
+    margin-right: 0.35em;
     font-size: 18px;
     line-height: 1.1;
     white-space: nowrap;
@@ -31,7 +33,7 @@
     &:not(:last-child)::after {
       content: "/";
       display: inline-block;
-      margin-left: 0.3em;
+      margin-left: 0.6em;
       color: $color-default-grey;
     }
   }

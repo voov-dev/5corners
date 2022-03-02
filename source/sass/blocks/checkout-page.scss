@@ -100,6 +100,7 @@
   &__login-link {
     text-decoration: underline;
     color: $color-default-grey;
+    outline: none;
     transition: color $trans-default;
 
     @media (hover: hover), screen and (min-width: 0\0) {

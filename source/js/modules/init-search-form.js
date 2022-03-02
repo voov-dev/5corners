@@ -6,7 +6,7 @@ const initSearchForm = () => {
   }
 
   const searchBtn = search.querySelector('.search-form__btn');
-  const searchInput = search.querySelector('.search-form__input input');
+  const searchInput = search.querySelector('.search-form__input');
 
   searchBtn.addEventListener('click', () => {
     searchInput.focus();

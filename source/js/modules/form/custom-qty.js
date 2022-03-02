@@ -19,12 +19,14 @@ export const customQty = () => {
           if (evt.target.classList.contains('custom-qty__btn--plus')) {
             if (num < valueMax) {
               input.value = num + valueStep;
+              input.dispatchEvent(new Event('change', {bubbles: true}));
             }
           }
 
           if (evt.target.classList.contains('custom-qty__btn--minus')) {
             if (num > valueMin) {
               input.value = num - valueStep;
+              input.dispatchEvent(new Event('change', {bubbles: true}));
             }
           }
         }

@@ -28,9 +28,9 @@ const orderValidationSuccessCallback = (e) => {
   }
 
   // eslint-disable-next-line no-console
-  console.log(`При оформлении покупки на сервер были бы отправлены следующие данные: \n${message}`);
+  console.log(`Содержимое объекта FormData: \n${message}`);
   // eslint-disable-next-line no-alert
-  alert(`При оформлении покупки на сервер были бы отправлены следующие данные: \n${message}`);
+  alert(`Содержимое объекта FormData: \n${message}`);
 
   resetForm(e.target);
 };

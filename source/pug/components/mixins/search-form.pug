@@ -16,10 +16,4 @@ mixin search-form(props)
       +icon("icon-search", 27, 27).search-form__btn-icon
     form(method="post").search-form__box
       +icon("icon-search", 25, 25).search-form__icon
-      +custom-input({
-        inputType: "search",
-        inputLabel: "Поиск",
-        inputPlaceholder: "Поиск",
-        inputName: "search-form",
-        inputId: "search-form",
-      }).search-form__input.custom-input--search
+      input(id="search-form", name="search-form", placeholder="Поиск", type="text").search-form__input
