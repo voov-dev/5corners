@@ -13,7 +13,7 @@
     width: 100%;
     padding-right: 6px;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       max-width: 160px;
       padding-right: 10px;
     }
@@ -29,7 +29,7 @@
     min-height: 100%;
     padding-left: 6px;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       max-width: calc(100% - 160px);
       padding-left: 10px;
     }
@@ -58,10 +58,11 @@
     padding-right: 25px;
     font-size: 16px;
     line-height: 1.2;
-    color: $color-default-grey;
+    color: @color-default-grey;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       display: block;
+
     }
   }
 
@@ -73,7 +74,7 @@
     font-size: 16px;
     line-height: 1.15;
 
-    @include vp-420 {
+    .vp-420 {
       font-size: 20px;
     }
   }
@@ -93,8 +94,9 @@
     font-size: 12px;
     outline: none;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       font-size: 14px;
+
     }
   }
 }

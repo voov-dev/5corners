@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const sourcemap = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
+const less = require('gulp-less');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const server = require('browser-sync').create();
@@ -26,16 +27,15 @@ const pugToHtml = () => {
 };
 
 const css = () => {
-  return gulp.src('source/sass/style.scss')
+  return gulp.src('source/less/style.less')
       .pipe(plumber())
       .pipe(sourcemap.init())
-      .pipe(sass())
+      .pipe(less())
       .pipe(postcss([autoprefixer({
         grid: true,
       })]))
       .pipe(gcmq()) // выключите, если в проект импортятся шрифты через ссылку на внешний источник
       .pipe(gulp.dest('build/css'))
-      .pipe(csso())
       .pipe(rename('style.min.css'))
       .pipe(sourcemap.write('.'))
       .pipe(gulp.dest('build/css'))

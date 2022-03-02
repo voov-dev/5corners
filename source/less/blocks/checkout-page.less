@@ -1,6 +1,4 @@
 .checkout-page {
-  $block-name:                &; // #{$block-name}__element
-
   &__wrapper {
     position: relative;
   }
@@ -15,13 +13,13 @@
     width: 100%;
     height: 200px;
     margin-bottom: 24px;
-    background-color: $color-default-grey;
+    background-color: @color-default-grey;
 
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       height: 400px;
     }
 
-    @include vp-1024 {
+    @media (min-width: @vp-1024) {
       position: absolute;
       top: 0;
       right: 0;
@@ -31,20 +29,20 @@
   }
 
   &__input-band {
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       display: flex;
       flex-wrap: wrap;
     }
 
-    #{$block-name}__input {
-      @include vp-768 {
+    .checkout-page__input {
+      @media (min-width: @vp-768) {
         max-width: 50%;
         padding-right: calc(35px / 2);
       }
     }
 
-    #{$block-name}__input + #{$block-name}__input {
-      @include vp-768 {
+    .checkout-page__input + .checkout-page__input {
+      @media (min-width: @vp-768) {
         padding-right: 0;
         padding-left: calc(35px / 2);
       }
@@ -54,7 +52,7 @@
   &__input {
     margin-bottom: 16px;
 
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       margin-bottom: 21px;
     }
   }
@@ -65,7 +63,7 @@
     font-size: 30px;
     line-height: 1.1;
 
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       margin-bottom: 15px;
       font-size: 40px;
     }
@@ -79,11 +77,11 @@
     line-height: 1.1;
     bottom: 30px;
 
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       font-size: 28px;
     }
 
-    @include vp-1024 {
+    @media (min-width: @vp-1024) {
       margin-top: 70px;
       margin-bottom: 5px;
     }
@@ -99,14 +97,14 @@
 
   &__login-link {
     text-decoration: underline;
-    color: $color-default-grey;
+    color: @color-default-grey;
     outline: none;
-    transition: color $trans-default;
+    transition: color @trans-default;
 
     @media (hover: hover), screen and (min-width: 0\0) {
       &:hover,
       &:focus {
-        color: $color-default-black;
+        color: @color-default-black;
       }
     }
   }
@@ -119,9 +117,9 @@
 
   &__item {
     padding: 16px 0;
-    border-bottom: 1px solid $color-default-grey;
+    border-bottom: 1px solid @color-default-grey;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       padding: 25px 35px 24px 0;
 
       &:last-of-type {
@@ -140,13 +138,13 @@
     font-weight: 700;
     font-size: 26px;
     line-height: 1.1;
-    color: $color-default-black;
+    color: @color-default-black;
 
-    @include vp-768 {
+    @media (min-width: @vp-768) {
       font-size: 32px;
     }
 
-    @include vp-1024 {
+    @media (min-width: @vp-1024) {
       position: absolute;
       top: 565px;
       right: 0;
@@ -154,8 +152,8 @@
       min-height: 135px;
       padding: 45px 30px;
       font-size: 40px;
-      color: $color-default-white;
-      background-color: rgba($color-default-black, 0.8);
+      color: @color-default-white;
+      background-color: rgba(@color-default-black, 0.8);
     }
   }
 
@@ -180,9 +178,9 @@
     font-size: 20px;
     line-height: 1.2;
     text-align: center;
-    border: 1px solid $color-default-black;
+    border: 1px solid @color-default-black;
 
-    @include vp-1024 {
+    @media (min-width: @vp-1024) {
       margin-top: 0;
       min-height: 70px;
       padding: 20px 25px;

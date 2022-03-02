@@ -1,6 +1,4 @@
 .main-menu {
-  $block-name:                &; // #{$block-name}__element
-
   &--mobile {
     position: fixed;
     left: 0;
@@ -11,11 +9,11 @@
     pointer-events: none;
     z-index: 150;
 
-    &#{$block-name}--visible {
+    &.main-menu--visible {
       pointer-events: auto;
     }
 
-    #{$block-name}__overlay {
+    .main-menu__overlay {
       content: "";
       display: block;
       position: absolute;
@@ -32,9 +30,9 @@
       transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
     }
 
-    #{$block-name}__wrapper {
-      background-color: $color-default-white;
-      color: $color-default-black;
+    .main-menu__wrapper {
+      background-color: @color-default-white;
+      color: @color-default-black;
       position: relative;
       z-index: 200;
       max-width: 280px;
@@ -48,29 +46,29 @@
       pointer-events: auto;
     }
 
-    &#{$block-name}--visible #{$block-name}__wrapper {
+    &.main-menu--visible .main-menu__wrapper {
       transform: none;
     }
 
-    &#{$block-name}--animatable #{$block-name}__wrapper {
+    &.main-menu--animatable .main-menu__wrapper {
       transition: all 130ms ease-in;
     }
 
-    &#{$block-name}--visible#{$block-name}--animatable #{$block-name}__wrapper {
+    &.main-menu--visible.main-menu--animatable .main-menu__wrapper {
       transition: all 330ms ease-out;
     }
 
-    &#{$block-name}--visible #{$block-name}__overlay {
+    &.main-menu--visible .main-menu__overlay {
       opacity: 1;
       user-select: auto;
       pointer-events: auto;
     }
 
-    #{$block-name}__list {
+    .main-menu__list {
       padding: 40px 25px;
     }
 
-    #{$block-name}__link {
+    .main-menu__link {
       display: inline-block;
       margin-bottom: 10px;
       padding: 8px 0;
@@ -88,14 +86,14 @@
     font-size: 18px;
     line-height: 1.2;
     text-transform: uppercase;
-    color: $color-default-grey;
+    color: @color-default-grey;
     outline: none;
-    transition: color $trans-default;
+    transition: color @trans-default;
 
     &:focus,
     &:hover,
     &.is-active {
-      color: $color-default-black;
+      color: @color-default-black;
     }
   }
 
@@ -104,45 +102,45 @@
     max-width: 100%;
     width: 100%;
 
-    #{$block-name}__list {
+    .main-menu__list {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
     }
 
-    #{$block-name}__item:nth-of-type(1),
-    #{$block-name}__item:nth-of-type(2),
-    #{$block-name}__item:nth-of-type(3) {
+    .main-menu__item:nth-of-type(1),
+    .main-menu__item:nth-of-type(2),
+    .main-menu__item:nth-of-type(3) {
       padding-right: 5px;
 
-      @include vp-1280 {
+      @media (min-width: @vp-1280) {
         padding-right: 15px;
       }
     }
 
-    #{$block-name}__item:nth-of-type(3) {
+    .main-menu__item:nth-of-type(3) {
       margin-right: 85px;
 
-      @include vp-1280 {
+      @media (min-width: @vp-1280) {
         margin-right: 120px;
       }
     }
 
-    #{$block-name}__item:nth-of-type(4) {
+    .main-menu__item:nth-of-type(4) {
       margin-left: 85px;
 
-      @include vp-1280 {
+      @media (min-width: @vp-1280) {
         margin-left: 120px;
       }
     }
 
-    #{$block-name}__item:nth-of-type(4),
-    #{$block-name}__item:nth-of-type(5),
-    #{$block-name}__item:nth-of-type(6) {
+    .main-menu__item:nth-of-type(4),
+    .main-menu__item:nth-of-type(5),
+    .main-menu__item:nth-of-type(6) {
       padding-left: 5px;
 
-      @include vp-1280 {
+      @media (min-width: @vp-1280) {
         padding-left: 15px;
       }
     }

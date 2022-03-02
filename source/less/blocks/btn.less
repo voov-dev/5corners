@@ -1,0 +1,30 @@
+.btn {
+  display: inline-flex;
+  margin: 10px 0;
+  padding: 10px 20px;
+  color: @color-default-black;
+  background-color: @color-default-white;
+  border: none;
+  cursor: pointer;
+  transition: opacity @trans-default, color @trans-default, background-color @trans-default;
+
+  &:disabled {
+    opacity: 0.5;
+
+    pointer-events: none;
+  }
+
+  &--text {
+    padding: 0;
+    color: @color-default-grey;
+    background-color: transparent;
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        color: @color-default-black;
+        background-color: transparent;
+      }
+    }
+  }
+}

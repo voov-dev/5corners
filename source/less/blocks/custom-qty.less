@@ -1,6 +1,4 @@
 .custom-qty {
-  $block-name: &; // #{$block-name}__element
-
   display: block;
   margin-bottom: 0;
 
@@ -19,7 +17,7 @@
     position: relative;
     width: 80px;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       width: 115px;
     }
   }
@@ -34,12 +32,9 @@
     line-height: 35px;
     font-family: inherit;
     text-align: center;
-    border: 1px solid $color-default-grey;
-    //#{$block-name}:not(#{$block-name}--disabled) button:focus ~ & { // stylelint-disable-line
-    //  //@include field-focus;
-    //}
+    border: 1px solid @color-default-grey;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       max-width: 115px;
       height: 40px;
       padding: 0 45px 2px;
@@ -61,7 +56,7 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       width: 45px;
     }
 
@@ -82,7 +77,7 @@
       left: 1px;
     }
 
-    #{$block-name}--disabled & {
+    .custom-qty--disabled & {
       cursor: not-allowed;
 
       &:hover,
@@ -100,7 +95,7 @@
     pointer-events: none;
     user-select: none;
 
-    @include vp-420 {
+    @media (min-width: @vp-420) {
       font-size: 16px;
     }
   }
@@ -111,21 +106,6 @@
 
     &:empty {
       display: none;
-    }
-  }
-
-
-  &--error {
-
-    #{$block-name}__name,
-    #{$block-name}__input,
-    #{$block-name}__help-text {
-      color: $color-danger;
-    }
-
-    #{$block-name}__input {
-      border-color: $color-danger;
-      background-color: lighten($color-danger, 35%);
     }
   }
 }

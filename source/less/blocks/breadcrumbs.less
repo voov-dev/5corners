@@ -3,22 +3,22 @@
   margin-top: 15px;
   margin-bottom: 30px;
   padding: 0;
-  color: $color-default-black;
+  color: @color-default-black;
 
-  @include vp-1024 {
+  @media (min-width: @vp-1024) {
     margin-top: 30px;
     margin-bottom: 48px;
   }
 
   a {
-    color: $color-default-grey;
+    color: @color-default-grey;
     text-decoration: none;
     outline: none;
-    transition: color $trans-default;
+    transition: color @trans-default;
 
     &:hover,
     &:focus {
-      color: $color-default-black;
+      color: @color-default-black;
       text-decoration: none;
     }
   }
@@ -34,7 +34,7 @@
       content: "/";
       display: inline-block;
       margin-left: 0.6em;
-      color: $color-default-grey;
+      color: @color-default-grey;
     }
   }
 }
