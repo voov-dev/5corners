@@ -44,11 +44,7 @@
                   <svg class="search-form__icon" width="25" height="25" aria-hidden="true">
                     <use xlink:href="#icon-search"></use>
                   </svg>
-                  <div class="custom-input search-form__input custom-input--search">
-                    <label class="custom-input__input-wrap">
-                      <input class="custom-input__input" type="search" id="search-form" name="search-form" placeholder="Поиск"><span class="custom-input__name">Поиск</span>
-                    </label>
-                  </div>
+                  <input class="search-form__input" id="search-form" name="search-form" placeholder="Поиск" type="text">
                 </form>
               </div>
             </div><span class="header__logo">
@@ -91,11 +87,9 @@
       <main>
         <!-- список модификаторов-->
         <div class="container">
-          <ul class="breadcrumbs" aria-label="Breadcrumb" role="navigation">
-            <li class="breadcrumbs__item"><a href="/home">Главная</a>
-            </li>
-            <li class="breadcrumbs__item"><span>Корзина</span>
-            </li>
+          <ul class="breadcrumbs" aria-label="Breadcrumb">
+            <li class="breadcrumbs__item"><a href="/home">Главная</a></li>
+            <li class="breadcrumbs__item" aria-current="page"><span>Корзина</span></li>
           </ul>
         </div>
         <div class="checkout-page">
@@ -109,49 +103,45 @@
                 </p>
                 <div class="checkout-page__form" data-validate data-callback="order">
                   <form>
-                    <div class="custom-input checkout-page__input" data-validate-type="text">
-                      <label class="custom-input__input-wrap">
-                        <input class="custom-input__input" type="text" id="address" name="user-address" minlength="2" placeholder="Адрес"><span class="custom-input__name">Адрес</span>
-                        <div class="custom-input__error">Не корректное адрес</div>
+                    <div class="custom-textarea checkout-page__input" data-validate-type="text">
+                      <label class="custom-textarea__input-wrap">
+                        <textarea class="custom-textarea__input" id="address" name="user-address" minlength="2" placeholder="Адрес" rows="1" required></textarea><span class="custom-textarea__name">Адрес</span><span class="custom-textarea__error">Необходимо указать адрес</span>
                       </label>
                     </div>
                     <div class="checkout-page__map" id="map"></div>
                     <div class="checkout-page__input-band">
                       <div class="custom-input checkout-page__input" data-validate-type="text" data-limitations="name">
                         <label class="custom-input__input-wrap">
-                          <input class="custom-input__input" type="text" name="user-name" minlength="2" placeholder="Ваше Имя"><span class="custom-input__name">Ваше Имя</span>
-                          <div class="custom-input__error">Не корректное имя</div>
+                          <input class="custom-input__input" type="text" name="user-name" minlength="2" placeholder="Ваше Имя" required><span class="custom-input__name">Ваше Имя</span><span class="custom-input__error">Не корректное имя</span>
                         </label>
                       </div>
                       <div class="custom-input checkout-page__input" data-validate-type="phone">
                         <label class="custom-input__input-wrap">
-                          <input class="custom-input__input" type="tel" name="user-phone" placeholder="Ваш Телефон"><span class="custom-input__name">Ваш Телефон</span>
-                          <div class="custom-input__error">Не корректный телефон</div>
+                          <input class="custom-input__input" type="tel" name="user-phone" placeholder="Ваш Телефон" required><span class="custom-input__name">Ваш Телефон</span><span class="custom-input__error">Не корректный телефон</span>
                         </label>
                       </div>
                     </div>
                     <div class="custom-input checkout-page__input" data-validate-type="email">
                       <label class="custom-input__input-wrap">
-                        <input class="custom-input__input" type="email" name="user-email" placeholder="Ваш Email"><span class="custom-input__name">Ваш Email</span>
-                        <div class="custom-input__error">Не корректный email</div>
+                        <input class="custom-input__input" type="email" name="user-email" placeholder="Ваш Email" required><span class="custom-input__name">Ваш Email</span><span class="custom-input__error">Не корректный email</span>
                       </label>
                     </div>
-                    <div class="custom-select checkout-page__input" data-select data-validate-type="select" data-name="some-name" data-id="id-example"><span class="custom-select__error">Выбирете тип упаковки</span><span class="custom-select__placeholder">Тип упаковки</span>
+                    <div class="custom-select checkout-page__input" data-select data-validate-type="select" data-name="user-select" data-id="user-select"><span class="custom-select__error">Выбирете тип упаковки</span><span class="custom-select__placeholder">Тип упаковки</span>
                       <button class="custom-select__button" type="button" aria-label="Выберите одну из опций"><span class="custom-select__text"></span><span class="custom-select__icon"></span></button>
                       <ul class="custom-select__list" role="listbox">
-                        <li class="custom-select__item" tabindex="0" data-select-value="id-1" aria-selected="false" role="option">Без упаковки</li>
-                        <li class="custom-select__item" tabindex="0" data-select-value="id-2" aria-selected="false" role="option">Стандартная</li>
-                        <li class="custom-select__item" tabindex="0" data-select-value="id-3" aria-selected="false" role="option">Подарочная</li>
+                        <li class="custom-select__item" tabindex="0" data-select-value="Без упаковки" aria-selected="false" role="option">Без упаковки</li>
+                        <li class="custom-select__item" tabindex="0" data-select-value="Стандартная" aria-selected="false" role="option">Стандартная</li>
+                        <li class="custom-select__item" tabindex="0" data-select-value="Подарочная" aria-selected="false" role="option">Подарочная</li>
                       </ul>
                     </div>
-                    <div class="custom-textarea checkout-page__input custom-textarea--auto">
+                    <div class="custom-textarea checkout-page__input">
                       <label class="custom-textarea__input-wrap">
                         <textarea class="custom-textarea__input" name="user-comment" placeholder="Введите комментарий" rows="1"></textarea><span class="custom-textarea__name">Введите комментарий</span>
                       </label>
                     </div>
                     <h2 class="checkout-page__headline-cards">Выбранные товары:</h2>
                     <ul class="checkout-page__items">
-                      <article class="checkout-card checkout-page__item">
+                      <li class="checkout-card checkout-page__item">
                         <div class="checkout-card__inner">
                           <div class="checkout-card__img"><img src="img/content/item.jpg" srcset="img/content/item@2x.jpg 2x" width="150" height="150" alt="Товар 1">
                           </div>
@@ -173,14 +163,14 @@
                                         <use xlink:href="#icon-plus"></use>
                                       </svg>
                                     </button>
-                                    <input class="custom-qty__input" type="number" value="1" name="product-id-1" max="99" min="1" step="1"></span></span>
+                                    <input class="custom-qty__input" type="number" value="1" name="product-id-1" data-price="1090" max="99" min="1" step="1"></span></span>
                               </div>
                               <button class="btn btn--text checkout-card__delete" type="button">Удалить</button>
                             </footer>
                           </div>
                         </div>
-                      </article>
-                      <article class="checkout-card checkout-page__item">
+                      </li>
+                      <li class="checkout-card checkout-page__item">
                         <div class="checkout-card__inner">
                           <div class="checkout-card__img"><img src="img/content/item.jpg" srcset="img/content/item@2x.jpg 2x" width="150" height="150" alt="Товар 2">
                           </div>
@@ -202,14 +192,14 @@
                                         <use xlink:href="#icon-plus"></use>
                                       </svg>
                                     </button>
-                                    <input class="custom-qty__input" type="number" value="1" name="product-id-2" max="99" min="1" step="1"></span></span>
+                                    <input class="custom-qty__input" type="number" value="1" name="product-id-2" data-price="700" max="99" min="1" step="1"></span></span>
                               </div>
                               <button class="btn btn--text checkout-card__delete" type="button">Удалить</button>
                             </footer>
                           </div>
                         </div>
-                      </article>
-                      <article class="checkout-card checkout-page__item">
+                      </li>
+                      <li class="checkout-card checkout-page__item">
                         <div class="checkout-card__inner">
                           <div class="checkout-card__img"><img src="img/content/item.jpg" srcset="img/content/item@2x.jpg 2x" width="150" height="150" alt="Товар 3">
                           </div>
@@ -231,13 +221,13 @@
                                         <use xlink:href="#icon-plus"></use>
                                       </svg>
                                     </button>
-                                    <input class="custom-qty__input" type="number" value="2" name="product-id-3" max="99" min="1" step="1"></span></span>
+                                    <input class="custom-qty__input" type="number" value="2" name="product-id-3" data-price="2000" max="99" min="1" step="1"></span></span>
                               </div>
                               <button class="btn btn--text checkout-card__delete" type="button">Удалить</button>
                             </footer>
                           </div>
                         </div>
-                      </article>
+                      </li>
                     </ul>
                     <div class="checkout-page__total"><span class="checkout-page__total-text">Итог:</span><span class="checkout-page__total-count">
                         <output>0</output> руб.</span></div>
